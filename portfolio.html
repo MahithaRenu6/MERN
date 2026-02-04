@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background: linear-gradient(135deg, #0a0a0a, #111827, #020617);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    animation:bgMove 12s ease infinite alternate;
+}
+
+@keyframes bgMove{
+    0%{background-position:left;}
+    100%{background-position:right;}
+}
+
+.portfolio{
+    width:90%;
+    max-width:900px;
+    background: rgba(20,20,30,0.85);
+    backdrop-filter: blur(18px);
+    border-radius:22px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+    overflow:hidden;
+    animation: fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.header{
+    text-align:center;
+    padding:40px 20px;
+    background: linear-gradient(135deg, #020024, #1e1b4b);
+}
+
+.avatar{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    background: linear-gradient(135deg, #22d3ee, #1e1b4b);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#ffffff;
+    font-size:48px;
+    font-weight:700;
+    margin:0 auto 15px;
+    border:4px solid #22d3ee;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 0 20px #22d3ee88;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+.header h1{
+    color:#e5e7eb;
+    font-size:28px;
+}
+
+.header p{
+    color:#94a3b8;
+    font-size:15px;
+}
+
+.content{
+    padding:30px;
+}
+
+.section{
+    margin-bottom:25px;
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.section h2{
+    color:#22d3ee;
+    margin-bottom:15px;
+    border-left:4px solid #22d3ee;
+    padding-left:10px;
+}
+
+.section p{
+    color:#cbd5f5;
+    font-size:15px;
+    line-height:1.7;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.skill{
+    padding:8px 16px;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color:#e5e7eb;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:600;
+    border:1px solid #22d3ee55;
+}
+
+.project-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap:20px;
+}
+
+.project-card{
+    background: rgba(15,23,42,0.9);
+    padding:20px;
+    border-radius:18px;
+    border:1px solid #22d3ee33;
+}
+
+.project-card h3{
+    color:#22d3ee;
+    margin-bottom:10px;
+}
+
+.project-card p{
+    color:#cbd5f5;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.project-card span{
+    color:#94a3b8;
+    font-size:13px;
+}
+
+.footer{
+    text-align:center;
+    padding:15px;
+    background: rgba(0,0,0,0.6);
+    color:#94a3b8;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="portfolio">
+
+    <div class="header">
+        <!-- DEFAULT AVATAR -->
+        <div class="avatar">M</div>
+        <h1>Mahitharenu</h1>
+        <p>Student | Web Enthusiast</p>
+    </div>
+
+    <div class="content">
+
+        <div class="section">
+            <h2>About Me</h2>
+            <p>
+            I am a passionate and dedicated student with a strong interest in web development and modern technologies.
+            I enjoy building responsive, user-friendly websites and applications using HTML, CSS, JavaScript, and React.
+            I’m continuously learning new tools and frameworks to improve my skills, and I love turning ideas into real projects.
+            My goal is to grow as a full-stack developer and create meaningful digital experiences.
+            </p>
+
+        </div>
+
+        <div class="section">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">React</div>
+                <div class="skill">Node.js</div>
+                <div class="skill">Express.js</div>
+                <div class="skill">MongoDB</div>
+                <div class="skill">Tailwind CSS</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Projects</h2>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Virtual Personal Trainer</h3>
+                    <p>Workout guidance and progress tracking web app.</p>
+                    <span>HTML • CSS • JavaScript</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>Browser History Management</h3>
+                    <p>Navigation using Stack & Linked List.</p>
+                    <span>C++ • DSA</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>BMI Calculator</h3>
+                    <p>Health calculator using height & weight.</p>
+                    <span>HTML • CSS • JavaScript</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>Parking Space Management System</h3>
+                    <p>Cost-effective parking solution with slot tracking and availability.</p>
+                    <span>HTML • CSS • JavaScript • PHP</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>Student Login & Registration App</h3>
+                    <p>Authentication system using Local Storage with validation.</p>
+                    <span>React • CSS</span>
+                </div>
+
+                <div class="project-card">
+                    <h3>Catering Recommendation Website</h3>
+                    <p>Smart food service recommender with chatbot integration.</p>
+                    <span>HTML • Tailwind CSS • JavaScript</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Contact</h2>
+            <p>Email: renu@email.com</p>
+            <p>Phone: +91 9876543210</p>
+            <p>GitHub: github.com/mahitharenu</p>
+            <p>LinkedIn: linkedin.com/mahitharenu</p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 Mahitharenu | Portfolio
+    </div>
+
+</div>
+
+</body>
+</html>

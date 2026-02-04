@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Voting Machine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+}
+
+body{
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#020617,#0f172a,#020617);
+color:#e5e7eb;
+}
+
+.vote-box{
+width:90%;
+max-width:520px;
+background:rgba(15,23,42,.9);
+border-radius:22px;
+padding:35px;
+box-shadow:0 0 50px #38bdf855;
+text-align:center;
+}
+
+h1{
+margin-bottom:10px;
+color:#38bdf8;
+}
+
+p{
+color:#cbd5f5;
+margin-bottom:25px;
+}
+
+.candidates{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:15px;
+margin-bottom:25px;
+}
+
+.candidate{
+background:#020617;
+border-radius:16px;
+padding:20px;
+border:1px solid #38bdf855;
+}
+
+.candidate h3{
+margin-bottom:10px;
+color:#e5e7eb;
+}
+
+.candidate button{
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#020617;
+color:#e5e7eb;
+font-weight:bold;
+cursor:pointer;
+border:1px solid #38bdf855;
+transition:.3s;
+}
+
+.candidate button:hover{
+background:#38bdf8;
+color:#020617;
+}
+
+.results{
+background:#020617;
+border-radius:16px;
+padding:20px;
+margin-top:20px;
+border:1px solid #38bdf833;
+}
+
+.results h2{
+color:#38bdf8;
+margin-bottom:15px;
+}
+
+.results p{
+font-weight:bold;
+margin:6px 0;
+color:#cbd5f5;
+}
+
+.winner{
+margin-top:15px;
+font-size:1.2rem;
+color:#22d3ee;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="vote-box">
+
+<h1>🗳️ Online Voting Machine</h1>
+<p>Cast your vote and see live results</p>
+
+<div class="candidates">
+
+<div class="candidate">
+<h3>Candidate A</h3>
+<button onclick="vote('A')">Vote</button>
+</div>
+
+<div class="candidate">
+<h3>Candidate B</h3>
+<button onclick="vote('B')">Vote</button>
+</div>
+
+<div class="candidate">
+<h3>Candidate C</h3>
+<button onclick="vote('C')">Vote</button>
+</div>
+
+</div>
+
+<div class="results">
+<h2>Vote Count</h2>
+
+<p>Candidate A: <span id="voteA">0</span></p>
+<p>Candidate B: <span id="voteB">0</span></p>
+<p>Candidate C: <span id="voteC">0</span></p>
+
+<div class="winner" id="winnerText">No winner yet</div>
+</div>
+
+</div>
+
+<script>
+let votes={A:0,B:0,C:0};
+
+function vote(candidate){
+
+votes[candidate]++;
+
+document.getElementById("voteA").innerText=votes.A;
+document.getElementById("voteB").innerText=votes.B;
+document.getElementById("voteC").innerText=votes.C;
+
+showWinner();
+}
+
+function showWinner(){
+
+let max=Math.max(votes.A,votes.B,votes.C);
+let winner="Tie";
+
+if(votes.A===max && votes.A!==votes.B && votes.A!==votes.C) winner="Candidate A";
+else if(votes.B===max && votes.B!==votes.A && votes.B!==votes.C) winner="Candidate B";
+else if(votes.C===max && votes.C!==votes.A && votes.C!==votes.B) winner="Candidate C";
+
+document.getElementById("winnerText").innerText=
+max===0?"No winner yet":"Winner: "+winner;
+}
+</script>
+
+</body>
+</html>

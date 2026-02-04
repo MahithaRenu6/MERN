@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ocean Stopwatch ⏱️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#020617,#0f172a,#020617);
+color:#e0f7fa;
+}
+
+.stopwatch{
+background:rgba(15,23,42,.9);
+padding:35px;
+border-radius:20px;
+box-shadow:0 0 40px #22d3ee55;
+text-align:center;
+width:320px;
+}
+
+h1{
+color:#22d3ee;
+margin-bottom:20px;
+}
+
+.time{
+font-size:40px;
+margin-bottom:25px;
+letter-spacing:2px;
+}
+
+.buttons{
+display:flex;
+justify-content:space-between;
+}
+
+button{
+flex:1;
+margin:0 6px;
+padding:10px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-size:16px;
+}
+
+.start{background:#22d3ee;color:#020617;}
+.stop{background:#ef4444;color:white;}
+.reset{background:#38bdf8;color:#020617;}
+</style>
+</head>
+
+<body>
+
+<div class="stopwatch">
+
+<h1>⏱️ Stopwatch</h1>
+
+<div class="time" id="display">00:00:00</div>
+
+<div class="buttons">
+<button class="start" onclick="start()">▶ Start</button>
+<button class="stop" onclick="stop()">⏸ Stop</button>
+<button class="reset" onclick="reset()">🔄 Reset</button>
+</div>
+
+</div>
+
+<script>
+let sec=0,min=0,hr=0;
+let timer=null;
+
+function start(){
+if(timer!==null) return;
+
+timer=setInterval(()=>{
+sec++;
+
+if(sec==60){
+sec=0;
+min++;
+}
+
+if(min==60){
+min=0;
+hr++;
+}
+
+document.getElementById("display").innerText=
+String(hr).padStart(2,"0")+":"+
+String(min).padStart(2,"0")+":"+
+String(sec).padStart(2,"0");
+
+},1000);
+}
+
+function stop(){
+clearInterval(timer);
+timer=null;
+}
+
+function reset(){
+stop();
+sec=0;min=0;hr=0;
+document.getElementById("display").innerText="00:00:00";
+}
+</script>
+
+</body>
+</html>

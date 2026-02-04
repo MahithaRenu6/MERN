@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ocean Todo 🌊</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#020c1b,#012a4a,#013a63);
+font-family:Segoe UI,sans-serif;
+color:#e0f7fa;
+}
+
+.todo-box{
+width:360px;
+background:rgba(0,40,70,0.85);
+border-radius:18px;
+padding:25px;
+box-shadow:0 0 35px rgba(0,200,255,0.4);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+color:#7dd3fc;
+}
+
+.input-area{
+display:flex;
+gap:10px;
+}
+
+input{
+flex:1;
+padding:10px;
+border-radius:10px;
+border:none;
+outline:none;
+background:#021f3f;
+color:#e0f7fa;
+}
+
+button{
+padding:10px 16px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#00b4d8;
+color:#001219;
+font-size:18px;
+}
+
+ul{
+list-style:none;
+padding:0;
+margin-top:20px;
+max-height:260px;
+overflow-y:auto;
+}
+
+li{
+background:#012f52;
+margin-bottom:10px;
+padding:10px 12px;
+border-radius:12px;
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+animation:pop .3s ease;
+}
+
+.task-text{
+display:flex;
+flex-direction:column;
+}
+
+.time{
+font-size:12px;
+color:#90e0ef;
+margin-top:4px;
+}
+
+li.done{
+text-decoration:line-through;
+opacity:.6;
+}
+
+.actions span{
+cursor:pointer;
+margin-left:10px;
+font-size:18px;
+}
+
+@keyframes pop{
+from{transform:scale(.9);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<div class="todo-box">
+<h1>🌊 TodoList</h1>
+
+<div class="input-area">
+<input id="task" placeholder="✍️ Add a task">
+<button onclick="add()">✨</button>
+</div>
+
+<ul id="list"></ul>
+
+</div>
+
+<script>
+function add(){
+
+let t=document.getElementById("task")
+if(t.value.trim()=="") return
+
+let now=new Date()
+let time=now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})
+let date=now.toLocaleDateString()
+
+let li=document.createElement("li")
+
+li.innerHTML=`
+<div class="task-text">
+<span>📝 ${t.value}</span>
+<span class="time">🕒 ${time} | 📅 ${date}</span>
+</div>
+<div class="actions">
+<span onclick="done(this)">✅</span>
+<span onclick="del(this)">❌</span>
+</div>
+`
+
+document.getElementById("list").appendChild(li)
+t.value=""
+}
+
+function del(e){
+e.parentElement.parentElement.remove()
+}
+
+function done(e){
+e.parentElement.parentElement.classList.toggle("done")
+}
+</script>
+
+</body>
+</html>

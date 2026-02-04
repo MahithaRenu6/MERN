@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Bank</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f0326,#1b0538,#2a0654);
+color:#e9d5ff;
+}
+
+.bank-box{
+background:rgba(40,10,80,.9);
+padding:35px;
+border-radius:20px;
+text-align:center;
+width:320px;
+box-shadow:0 0 40px #a855f755;
+}
+
+h2{
+margin-bottom:20px;
+color:#c084fc;
+}
+
+p{
+font-size:18px;
+margin-bottom:15px;
+}
+
+input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+outline:none;
+background:#2e1065;
+color:white;
+margin-bottom:20px;
+}
+
+input::placeholder{
+color:#c4b5fd;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+margin:0 6px;
+font-size:15px;
+}
+
+.deposit{
+background:#9333ea;
+color:white;
+}
+
+.withdraw{
+background:#7c3aed;
+color:white;
+}
+
+button:hover{
+opacity:.8;
+}
+</style>
+
+</head>
+<body>
+
+<div class="bank-box">
+
+<h2>🏦 Simple Bank System</h2>
+
+<p>💰 Balance: ₹<span id="balance">0</span></p>
+
+<input type="number" id="amount" placeholder="Enter amount">
+
+<button class="deposit" onclick="deposit()">➕ Deposit</button><br><br>
+<button class="withdraw" onclick="withdraw()">➖ Withdraw</button>
+
+</div>
+
+<script>
+let balance = 0;
+
+function checkBalance(){
+document.getElementById("balance").innerText = balance;
+}
+
+function deposit(){
+let amt = Number(document.getElementById("amount").value);
+
+if(amt>0){
+balance+=amt;
+alert("Amount Deposited 💜");
+checkBalance();
+}else{
+alert("Enter valid amount");
+}
+}
+
+function withdraw(){
+let amt = Number(document.getElementById("amount").value);
+
+if(amt>0 && amt<=balance){
+balance-=amt;
+alert("Amount Withdrawn 💜");
+checkBalance();
+}else{
+alert("Insufficient Balance or Invalid Amount");
+}
+}
+</script>
+
+</body>
+</html>

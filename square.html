@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Square Calculator</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f0326,#1b0538,#2a0654);
+color:#e9d5ff;
+}
+
+.calc-box{
+background:rgba(40,10,80,.9);
+padding:35px;
+border-radius:20px;
+width:320px;
+text-align:center;
+box-shadow:0 0 40px #a855f755;
+}
+
+h2{
+color:#c084fc;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+outline:none;
+background:#2e1065;
+color:white;
+margin-bottom:20px;
+}
+
+input::placeholder{
+color:#c4b5fd;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+background:#9333ea;
+color:white;
+font-size:16px;
+}
+
+button:hover{
+opacity:.85;
+}
+
+.result{
+margin-top:20px;
+font-size:18px;
+color:#ddd6fe;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calc-box">
+
+<h2>🔢 Square Calculator</h2>
+
+<input type="number" id="num" placeholder="Enter number">
+
+<button onclick="square()">Calculate Square</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+function square(){
+let n=document.getElementById("num").value;
+
+if(n===""){
+alert("Enter a number");
+return;
+}
+
+document.getElementById("result").innerText=
+"Square = "+(n*n);
+}
+</script>
+
+</body>
+</html>
